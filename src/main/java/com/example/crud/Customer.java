@@ -16,6 +16,13 @@ public class Customer {
     // Constructors, Getters, and Setters
     public Customer() {}
 
+    // Custom constructor to accept customerId, companyName, and contactName
+    public Customer(Long customerId, String companyName, String contactName) {
+        this.customerId = customerId;
+        this.companyName = companyName;
+        this.contactName = contactName;
+    }
+
     public Customer(String companyName, String contactName) {
         this.companyName = companyName;
         this.contactName = contactName;
