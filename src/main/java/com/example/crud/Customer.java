@@ -9,40 +9,40 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
+    private Long customerId;
+    private String companyName;
+    private String contactName;
 
     // Constructors, Getters, and Setters
     public Customer() {}
 
-    public Customer(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public Customer(String companyName, String contactName) {
+        this.companyName = companyName;
+        this.contactName = contactName;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
-    public String getName() {
-        return name;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 }
 
