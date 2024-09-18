@@ -69,4 +69,30 @@ public class OrdersController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // UPDATE an Order by ID
+    @PutMapping("/{id}")
+    public ResponseEntity<Orders> updateOrder(@PathVariable Long id, @RequestBody Orders updatedOrder) {
+        Optional<Orders> orderData = ordersRepository.findById(id);
+
+        if (orderData.isPresent()) {
+            Orders order = orderData.get();
+            order.setCustomer(updatedOrder.getCustomer()); // Assuming you've mapped the customer
+            order.setEmployeeId(updatedOrder.getEmployeeId());
+            order.setOrderDate(updatedOrder.getOrderDate());
+            order.setRequiredDate(updatedOrder.getRequiredDate());
+            order.setShipDate(updatedOrder.getShipDate());
+            order.setShipVia(updatedOrder.getShipVia());
+            order.setShipName(updatedOrder.getShipName());
+            order.setShipAddress(updatedOrder.getShipAddress());
+            order.setShipCity(updatedOrder.getShipCity());
+            order.setShipCountry(updatedOrder.getShipCountry());
+            order.setShipRegion(updatedOrder.getShipRegion());
+            order.setShipPostalCode(updatedOrder.getShipPostalCode());
+
+            return new ResponseEntity<>(ordersRepository.save(order), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
