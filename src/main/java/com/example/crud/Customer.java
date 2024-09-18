@@ -1,17 +1,19 @@
 package com.example.crud;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
     private String companyName;
     private String contactName;
+
+    // One customer can have many orders
+    @OneToMany(mappedBy = "customer")
+    private List<Orders> orders;
 
     // Constructors, Getters, and Setters
     public Customer() {}
