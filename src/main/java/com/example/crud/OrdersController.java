@@ -58,4 +58,15 @@ public class OrdersController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // DELETE all Orders
+    @DeleteMapping("/all")
+    public ResponseEntity<HttpStatus> deleteAllOrders() {
+        try {
+            ordersRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
