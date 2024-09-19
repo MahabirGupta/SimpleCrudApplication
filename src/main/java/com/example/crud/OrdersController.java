@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,5 +96,30 @@ public class OrdersController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+//    @GetMapping("/customer-order-count")
+//    public List<Object[]> getCustomerContactNamesWithOrderCount() {
+//        return ordersRepository.findCustomerContactNamesWithOrderCount();
+//    }
+//@GetMapping("/customer-order-count-1998")
+//public List<Object[]> getCustomerOrderCountByYear() throws Exception {
+//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//    Date startDate = dateFormat.parse("1998-01-01");
+//    Date endDate = dateFormat.parse("1998-12-31");
+//    return ordersRepository.findCustomerOrderCountByYear(startDate, endDate);
+//}
+@GetMapping("/customer-order-count-1998")
+public List<Object[]> getCustomerOrderCountByYear() throws Exception {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date startDate = dateFormat.parse("1998-01-01");
+    Date endDate = dateFormat.parse("1998-12-31");
+    return ordersRepository.findCustomerOrderCountByYear(startDate, endDate);
+}
+
+    // Bulk insert orders
+    @PostMapping("/bulk-insert")
+    public List<Orders> insertOrders(@RequestBody List<Orders> orders) {
+        return ordersRepository.saveAll(orders);  // Save all orders in a single transaction
     }
 }
