@@ -25,6 +25,11 @@ public class OrderDetails {
     @JoinColumn(name = "orderID", referencedColumnName = "orderID", insertable = false, updatable = false)
     private Orders order;
 
+    // Many OrderDetails belong to one Product
+    @ManyToOne
+    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
+    private Products product;
+
     public Long getOrderID() {
         return orderID;
     }
@@ -71,5 +76,13 @@ public class OrderDetails {
 
     public void setOrder(Orders order) {
         this.order = order;
+    }
+
+    public Products getProduct() {
+        return product;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
     }
 }
