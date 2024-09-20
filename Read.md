@@ -67,3 +67,29 @@ ORDER BY Orders DESC;
 +--------------------+--------+
 13 rows in set (0.01 sec)
 
+2a.query the top 10 customers who have the most orders.
+
+SELECT c.company_name, COUNT(o.orderid) AS total_orders
+FROM customer c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_date BETWEEN '1998-01-01' AND '1998-12-31'
+GROUP BY c.company_name
+ORDER BY total_orders DESC
+LIMIT 10;
+
++--------------+--------------+
+| company_name | total_orders |
++--------------+--------------+
+| SG Pte.Ltd   |           13 |
+| Don Pte.Ltd  |            9 |
+| Star Pte.Ltd |            9 |
+| JB Pte.Ltd   |            8 |
+| Vera Pte.Ltd |            8 |
+| BSA Pte.Ltd  |            7 |
+| ABC Pte.Ltd  |            7 |
+| HIJ Pte.Ltd  |            7 |
+| RST Pte.Ltd  |            7 |
+| XYZ Pte.Ltd  |            6 |
++--------------+--------------+
+10 rows in set (0.00 sec)
+
