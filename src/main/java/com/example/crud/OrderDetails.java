@@ -30,6 +30,7 @@ public class OrderDetails {
     @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
     private Products product;
 
+
     public Long getOrderID() {
         return orderID;
     }
