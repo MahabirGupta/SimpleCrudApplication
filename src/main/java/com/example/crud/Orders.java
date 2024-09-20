@@ -2,6 +2,7 @@ package com.example.crud;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Orders {
@@ -14,6 +15,10 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "customer_id") // This is the foreign key column in the Orders table
     private Customer customer;
+
+    // One order can have many order details
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderDetails> orderDetails;
 
     private String employeeId;
     private Date orderDate;
@@ -45,6 +50,13 @@ public class Orders {
         this.customer = customer;
     }
 
+    public List<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
     public String getEmployeeId() {
         return employeeId;
     }
