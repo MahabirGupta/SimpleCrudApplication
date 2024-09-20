@@ -21,6 +21,25 @@ Orders = 0;
 +---------------+--------+
 2 rows in set (0.01 sec)
 
+b. List all the unique customer names who had ordered products that contain the word “Lager”.
+
+SELECT DISTINCT c.company_name
+FROM customer c
+JOIN orders o ON c.customer_id = o.customer_id
+JOIN order_details od ON o.orderid = od.orderid
+JOIN products p ON od.product_id = p.product_id
+WHERE p.product_name LIKE '%Lager%';
++--------------+
+| company_name |
++--------------+
+| SG Pte.Ltd   |
+| JB Pte.Ltd   |
+| Don Pte.Ltd  |
+| Star Pte.Ltd |
+| BSA Pte.Ltd  |
+| ABC Pte.Ltd  |
++--------------+
+6 rows in set (0.00 sec)
 c. For each customer, display the number of orders with the order date in the year of 1998.
 
 SELECT c.contact_name AS ContactName,      
