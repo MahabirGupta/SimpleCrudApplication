@@ -1,7 +1,8 @@
 package com.example.crud;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -21,9 +22,14 @@ public class Orders {
     private List<OrderDetails> orderDetails;
 
     private String employeeId;
-    private Date orderDate;
-    private Date requiredDate;
-    private Date shipDate;
+    @Column(name = "order_date")
+    private LocalDate orderDate;
+
+    @Column(name = "required_date")
+    private LocalDate requiredDate;
+
+    @Column(name = "ship_date")
+    private LocalDate shipDate;
     private String shipVia;
     private String shipName;
     private String shipAddress;
@@ -65,27 +71,27 @@ public class Orders {
         this.employeeId = employeeId;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getRequiredDate() {
+    public LocalDate getRequiredDate() {
         return requiredDate;
     }
 
-    public void setRequiredDate(Date requiredDate) {
+    public void setRequiredDate(LocalDate requiredDate) {
         this.requiredDate = requiredDate;
     }
 
-    public Date getShipDate() {
+    public LocalDate getShipDate() {
         return shipDate;
     }
 
-    public void setShipDate(Date shipDate) {
+    public void setShipDate(LocalDate shipDate) {
         this.shipDate = shipDate;
     }
 

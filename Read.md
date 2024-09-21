@@ -93,3 +93,8 @@ LIMIT 10;
 +--------------+--------------+
 10 rows in set (0.00 sec)
 
+Write a web application that allows the management to query the top 10 customers who have the most orders. 
+The web application should allow the user to be able to enter a date range to query, the date range will be based on 
+order date.
+
+http://localhost:8080/top-customers?startDate=1998-01-01&endDate=1998-12-31
